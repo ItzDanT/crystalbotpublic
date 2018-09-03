@@ -748,6 +748,7 @@ client.on("message", (message) => {
 });
 
 
+
 client.on('message' , message => {
 
     if (message.content === "-support") {
@@ -760,6 +761,12 @@ client.on('message' , message => {
 رابط السيرفر https://discord.gg/r84uWs
  **
 `);
+	message.author.sendEmbed(embed);
+   }
+});
 
 
- 
+
+
+//TOKEN BOT//
+client.login(process.env.BOT_TOKEN)	    
