@@ -34,7 +34,6 @@ Prefix Bot = -
         ***__General orders__***
 **
 『id / معلومات عن حسابك』
-『-count / يوريك عدد اعضاء السيرفر』
 『draw / يكرر كلامك في صوره』
 『embed / يكرر كلامك بمبيد』
 『roles / يعرض لك الرتب و عددها』
@@ -577,17 +576,7 @@ message.channel.send("``لا تستطيع سحب "+ message.mentions.members.fir
 message.react("❌")
  }}});
 
- client.on('message', message => {
-              if (!message.channel.guild) return;
-      if(message.content =='-count')
-      var IzRo = new Discord.RichEmbed()
-      .setThumbnail(message.author.avatarURL)
-      .setFooter(message.author.username, message.author.avatarURL)
-      .setTitle(':tulip:| Members info')
-      .addBlankField(true)
-      .addField('عدد اعضاء السيرفر',`${message.guild.memberCount}`)
-      message.channel.send(IzRo);
-    });
+
 
 
 client.on("message", msg => {
