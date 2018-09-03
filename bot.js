@@ -15,7 +15,8 @@ const zalgo = require('zalgolize');
 const sql = require("sqlite");
  const dateFormat = require('dateformat'); 
  const pretty = require('pretty-ms') 
-
+,ti={}  
+,spee={};
 
 
 
@@ -278,27 +279,7 @@ return;
 
 });
 
-client.on('message', msg => {
-	var  prefix = "-";
- if (msg.content.startsWith(prefix + 'cal')) {
-    let args = msg.content.split(" ").slice(1);
-        const question = args.join(' ');
-    if (args.length < 1) {
-        msg.reply('Specify a equation, please.');
-} else {    let answer;
-    try {
-        answer = math.eval(question);
-    } catch (err) {
-        msg.reply(`Error: ${err}`);
-    }
-    
-    const embed = new Discord.RichEmbed()
-    .addField("**Input**: ",`**${question}**`, true)
-    .addField("**Output**: ",`**${answer}**`, true)
-    msg.channel.send(embed)
-    }
-};
-});
+
 
 client.on('message', message => { 
 	var prefix = "-";
@@ -352,23 +333,68 @@ function getValue(key, array) {
 }
 
 
-var AsciiTable = require('ascii-data-table').default
-client.on('message', message =>{
+client.on("message", message => {
+	var prefix = "-";
+ if (message.content === "-help-admin") {
+	  message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
+  const embed = new Discord.RichEmbed() 
+      .setColor("#000000")
+      .setDescription(`
+**
+=-=-=--=-=--=-=-=-=--=-=-=-=-=-=-=-=-=-=
+            Comet Bot Help
+=-=-=--=-=--=-=-=-=--=-=-=-=-=-=-=-=-=-=
+**
+***
+الوصف
+***
+**
+بوت سريع الاستجابة يتوفر على الميوزك بجودة عالية
+و مرففوع على اكثر من 5 خوادم لضمان عدم التقطيع او الاق
+cmd:
+=-=-=-=-=-=-=
+ADMIN
+=-=-=-=-=-=-=
+-ban
+-kick
+-mute
+-unmute
+-mutechannel
+-unmutechannel
+-role
+-roleremove
+=-=-=-=-=-=-=
+PUBLIC
+=-=-=-=-=-=-=
+-tag
+-google
+-tr (ترجمة)
+-move
+-prems
+-short
+-count
+-skin
+=-=-=-=-=-=-=
+GAMES
+=-=-=-=-=-=-=
+-صراحه
+-عقاب
+-لو خيروك
+-مريم
+-فكك
+-عواصم
+=-=-=-=-=-=-=
+MUSIC
+=-=-=-=-=-=-=
+استخدم امر
+-music-help
+لمعرفة اوامر الاغاني
+**
 
-    if(message.content == "-roles"){
-        var 
-        ros=message.guild.roles.size,
-        data = [['Rank', 'RoleName']]
-        for(let i =0;i<ros;i++){
-            if(message.guild.roles.array()[i].id !== message.guild.id){
-         data.push([i,`${message.guild.roles.filter(r => r.position == ros-i).map(r=>r.name)}`])
-        }}
-        let res = AsciiTable.table(data)
-
-        message.channel.send(`**\`\`\`xl\n${res}\`\`\`**`);
-    }
-});
-
-
+`)
+   message.author.sendEmbed(embed)
+    
+   }
+   }); 
 
 
